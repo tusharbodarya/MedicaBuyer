@@ -1,0 +1,156 @@
+<div class="main-content-inner">
+    <!-- main-content-wrap -->
+    <div class="main-content-wrap">
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Product infomation</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li>
+                    <a href="index.html">
+                        <div class="text-tiny">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <i class="icon-chevron-right"></i>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="text-tiny">Product</div>
+                    </a>
+                </li>
+                <li>
+                    <i class="icon-chevron-right"></i>
+                </li>
+                <li>
+                    <div class="text-tiny">New Product</div>
+                </li>
+            </ul>
+        </div>
+        <!-- new-Product -->
+        <div class="wg-box">
+            <form class="form-new-product form-style-1" action="/admin/product/create" method="POST"
+                enctype="multipart/form-data">
+                <% if (typeof errors !== 'undefined') { %>
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            <% errors.forEach(function(error) { %>
+                                <li><%= error.msg %></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                <% } %>
+                <fieldset class="category">
+                    <div class="body-title">
+                        Category <span class="tf-color-1">*</span>
+                    </div>
+                    <select class="flex-grow" name="category" id="category">
+                        <% categories.forEach(category=> { %>
+                            <option value="<%= category._id %>">
+                                <%= category.name %>
+                            </option>
+                            <% }) %>
+                    </select>
+                </fieldset>
+                <fieldset class="subCategory">
+                    <div class="body-title">
+                        Sub Category <span class="tf-color-1">*</span>
+                    </div>
+                    <select class="flex-grow" name="subcategory" id="subCategory"></select>
+                </fieldset>
+                <fieldset class="name">
+                    <div class="body-title">
+                        Product name <span class="tf-color-1">*</span>
+                    </div>
+                    <input class="flex-grow" type="text" placeholder="Product name" name="name" id="name" tabindex="0"
+                        value="" aria-required="true" required="" />
+                </fieldset>
+                <fieldset class="price">
+                    <div class="body-title">Price <span class="tf-color-1">*</span></div>
+                    <input class="flex-grow" type="number" placeholder="Price" name="price" id="price" tabindex="0"
+                        value="" aria-required="true" required="" />
+                </fieldset>
+                <fieldset class="originalPrice">
+                    <div class="body-title">Original Price</div>
+                    <input class="flex-grow" type="number" placeholder="Original Price" name="original_price"
+                        id="originalPrice" tabindex="0" value="" />
+                </fieldset>
+                <fieldset class="discount">
+                    <div class="body-title">Discount</div>
+                    <input class="flex-grow" type="number" placeholder="Discount" name="discount" id="discount"
+                        tabindex="0" value="" />
+                </fieldset>
+                <fieldset class="modelNumber">
+                    <div class="body-title">Model Number</div>
+                    <input class="flex-grow" type="text" placeholder="Model Number" name="model_number" id="modelNumber"
+                        tabindex="0" value="" />
+                </fieldset>
+                <fieldset class="keyFeatures">
+                    <div class="body-title">Key Features</div>
+                    <input class="flex-grow" type="text" placeholder="Key Features" name="key_features" id="keyFeatures"
+                        tabindex="0" value="" />
+                </fieldset>
+                <fieldset class="description">
+                    <div class="body-title">
+                        Description <span class="tf-color-1">*</span>
+                    </div>
+                    <textarea class="flex-grow" name="product_description" id="description" tabindex="0" aria-required="true"
+                        required=""></textarea>
+                </fieldset>
+                <fieldset class="warranty">
+                    <div class="body-title">Warranty</div>
+                    <input class="flex-grow" type="text" placeholder="Warranty" name="warranty" id="warranty"
+                        tabindex="0" value="" />
+                </fieldset>
+                <fieldset>
+                    <div class="body-title">
+                        Upload Product images <span class="tf-color-1">*</span>
+                    </div>
+                    <div class="upload-image flex-grow">
+                        <div class="item up-load">
+                            <label class="uploadfile" for="myFile">
+                                <span class="icon">
+                                    <i class="icon-upload-cloud"></i>
+                                </span>
+                                <span class="body-text">Drop your images here or select
+                                    <span class="tf-color">click to browse</span></span>
+                                <input type="file" name="images" id="myFile" multiple />
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="bot">
+                    <div></div>
+                    <button class="tf-button w208" type="submit">Add Product</button>
+                </div>
+            </form>
+        </div>
+        <!-- /new-Product -->
+    </div>
+    <!-- /main-content-wrap -->
+</div>
+
+<script>
+    document.getElementById("category").addEventListener("change", function () {
+        const categoryId = this.value;
+        const subCategorySelect = document.getElementById("subCategory");
+
+        // Clear the current options
+        subCategorySelect.innerHTML =
+            '<option value="">Select Sub Category</option>';
+
+        if (categoryId) {
+            fetch(`/admin/product/category/${categoryId}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    data.forEach((subCategory) => {
+                        const option = document.createElement("option");
+                        option.value = subCategory._id;
+                        option.textContent = subCategory.name;
+                        subCategorySelect.appendChild(option);
+                    });
+                })
+                .catch((error) =>
+                    console.error("Error fetching subcategories:", error)
+                );
+        }
+    });
+</script>

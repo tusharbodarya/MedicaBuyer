@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <%= title %>
+    </title>
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="/font/fonts.css" />
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="/icon/style.css" />
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/images/favicon.png" />
+</head>
+
+<body class="body">
+    <!-- #wrapper -->
+    <div id="wrapper">
+        <!-- #page -->
+        <div id="page" class="">
+            <!-- layout-wrap -->
+            <div class="layout-wrap">
+                <!-- preload -->
+                <div id="preload" class="preload-container">
+                    <div class="preloading">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- /preload -->
+                <!-- section-menu-left -->
+                <%- include('../partials/sidebar') %>
+                    <!-- /section-menu-left -->
+                    <!-- section-content-right -->
+                    <div class="section-content-right">
+                        <!-- header-dashboard -->
+                        <%- include('../partials/header') %>
+                            <!-- /header-dashboard -->
+                            <!-- main-content -->
+                            <div class="main-content">
+                                <!-- main-content-wrap -->
+                                <%- body %>
+                                    <!-- /main-content-wrap -->
+                                    <!-- bottom-page -->
+                                    <!-- Include Footer -->
+                                    <%- include('../partials/footer') %>
+                                        <!-- /bottom-page -->
+                            </div>
+                            <!-- /main-content -->
+                    </div>
+                    <!-- /section-content-right -->
+            </div>
+            <!-- /layout-wrap -->
+        </div>
+        <!-- /#page -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Javascript -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-select.min.js"></script>
+    <script src="/js/zoom.js"></script>
+    <script src="/js/dataTables.min.js"></script>
+    <script src="/js/jvectormap-1.2.2.min.js"></script>
+    <script src="/js/jvectormap-us-lcc.js"></script>
+    <script src="/js/jvectormap.js"></script>
+    <script src="/js/apexcharts/apexcharts.js"></script>
+    <script src="/js/apexcharts/line-chart-1.js"></script>
+    <script src="/js/apexcharts/line-chart-2.js"></script>
+    <script src="/js/apexcharts/line-chart-3.js"></script>
+    <script src="/js/apexcharts/line-chart-4.js"></script>
+    <script src="/js/apexcharts/line-chart-7.js"></script>
+    <script src="/js/switcher.js"></script>
+    <script src="/js/theme-settings.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
+</body>
+
+<!-- Mirrored from themesflat.co/html/remos/home-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 13:10:59 GMT -->
+
+</html>

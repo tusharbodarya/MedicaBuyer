@@ -1,0 +1,84 @@
+<div class="main-content-inner">
+    <!-- main-content-wrap -->
+    <div class="main-content-wrap">
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>All Awards & Recognition</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li>
+                    <a href="index.html">
+                        <div class="text-tiny">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <i class="icon-chevron-right"></i>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="text-tiny">Awards & Recognition</div>
+                    </a>
+                </li>
+                <li>
+                    <i class="icon-chevron-right"></i>
+                </li>
+                <li>
+                    <div class="text-tiny">All Awards & Recognition</div>
+                </li>
+            </ul>
+        </div>
+        <!-- all-Awards & Recognition -->
+        <div class="wg-box">
+            <div class="flex items-center justify-between gap10 flex-wrap">
+                <a class="tf-button style-1 w208" href="/admin/awards/create"><i class="icon-plus"></i>Add new
+                    Award</a>
+            </div>
+            <table id="myTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% awards.forEach(function(award, index) { %>
+                        <tr>
+                            <td>
+                                <%= index + 1 %>
+                            </td>
+                            <td>
+                                <% if (award.image) { %>
+                                    <img src="<%= award.image %>" alt="Award Image" width="100" />
+                                    <% } else { %> No Image <% } %>
+                            </td>
+                            <td>
+                                <%= award.title || 'No Title' %>
+                            </td>
+                            <td>
+                                <%= award.description %>
+                            </td>
+                            <td>
+                                <div class="list-icon-function">
+                                    <div class="item edit">
+                                        <a href="/admin/awards/edit/<%= award._id %>">
+                                            <i class="icon-edit-3"></i>
+                                        </a>
+                                    </div>
+                                    <div class="item trash">
+                                        <a href="/admin/awards/delete/<%= award._id %>"
+                                            onclick="return confirm('Are you sure?')">
+                                            <i class="icon-trash-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+        <!-- /all-Awards & Recognition -->
+    </div>
+    <!-- /main-content-wrap -->
+</div>

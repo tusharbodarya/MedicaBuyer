@@ -1,0 +1,61 @@
+<div class="main-content-inner">
+    <!-- main-content-wrap -->
+    <div class="main-content-wrap">
+        <div class="flex items-center flex-wrap justify-between gap20 mb-27">
+            <h3>Awards & Recognition</h3>
+            <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
+                <li>
+                    <a href="index.html"><div class="text-tiny">Dashboard</div></a>
+                </li>
+                <li>
+                    <i class="icon-chevron-right"></i>
+                </li>
+                <li>
+                    <a href="#"><div class="text-tiny">Awards & Recognition</div></a>
+                </li>
+                <li>
+                    <i class="icon-chevron-right"></i>
+                </li>
+                <li>
+                    <div class="text-tiny">Edit Awards & Recognition</div>
+                </li>
+            </ul>
+        </div>
+        <!-- new-Awards & Recognition -->
+        <div class="wg-box">
+            <form class="form-new-product form-style-1" action="/admin/awards/edit/<%= award._id %>" method="POST" enctype="multipart/form-data">
+                <fieldset class="name">
+                    <div class="body-title">Title (optional)<span class="tf-color-1">*</span></div>
+                    <input class="flex-grow" type="text" placeholder="Title"name="title" id="title" tabindex="0" value="<%= award.title %>">
+                </fieldset>
+                <fieldset class="name">
+                    <div class="body-title">Description<span class="tf-color-1">*</span></div>
+                    <textarea class="flex-grow" type="text" placeholder="Description"name="description" id="description" tabindex="0" value="" aria-required="true" required=""><%= award.description %></textarea>
+                </fieldset>
+                <fieldset>
+                    <div class="body-title">Upload Image (optional) <span class="tf-color-1">*</span></div>
+                    <div class="upload-image flex-grow">
+                        <div class="item up-load">
+                            <label class="uploadfile" for="myFile">
+                                <span class="icon">
+                                    <i class="icon-upload-cloud"></i>
+                                </span>
+                                <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                <input type="file" name="image" id="myFile">
+                                <% if (award.image) { %>
+                                    <img src="<%= award.image %>" alt="Award Image" width="100">
+                                <% } %>
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="bot">
+                    <div></div>
+                    <button class="tf-button w260" type="submit">Update Awards & Recognition</button>
+                </div>
+            </form>
+        </div>
+        <!-- /new-Awards & Recognition -->
+    </div>
+    <!-- /main-content-wrap -->
+</div>
