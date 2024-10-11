@@ -22,3 +22,5 @@ build/
 # IDE or editor-specific files
 .vscode/
 .idea/
+
+vercel.json
