@@ -4,11 +4,6 @@ const Product = require('../../models/Product'); // Assuming you have a Product 
 
 const dashboard = async (req, res) => {
     try {
-        // Check if the user is authenticated
-        // if (!req.isAuthenticated()) {
-        //     return res.redirect('/admin/login'); // Early return to avoid further execution
-        // }
-
         // Fetch data for the dashboard
         const totalUsers = await User.countDocuments();
         const totalProducts = await Product.countDocuments();

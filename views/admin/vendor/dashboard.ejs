@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Vendors Dashboard
+    </title>
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    <!-- Font -->
+    <link rel="stylesheet" href="/font/fonts.css" />
+
+    <!-- Icon -->
+    <link rel="stylesheet" href="/icon/style.css" />
+
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/images/favicon.png" />
+</head>
+
+<body class="body">
+    <!-- #wrapper -->
+    <div id="wrapper">
+        <!-- #page -->
+        <div id="page" class="">
+            <!-- layout-wrap -->
+            <div class="layout-wrap">
+                <!-- preload -->
+                <div id="preload" class="preload-container">
+                    <div class="preloading">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- /preload -->
+                <!-- section-menu-left -->
+                <%- include('sidebar') %>
+                    <!-- /section-menu-left -->
+                    <!-- section-content-right -->
+                    <div class="section-content-right">
+                        <!-- header-dashboard -->
+                        <%- include('header') %>
+                            <!-- /header-dashboard -->
+                            <!-- main-content -->
+                            <div class="main-content">
+                                <!-- main-content-wrap -->
+                                <div class="main-content-inner">
+                                    <!-- main-content-wrap -->
+                                    <div class="main-content-wrap">
+                                        <div class="tf-section-4 mb-30">
+                                            <!-- chart-default -->
+                                            <div class="wg-chart-default">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center gap14">
+                                                        <div class="image">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
+                                                                <path opacity="0.08" d="M19.1086 2.12943C22.2027 0.343099 26.0146 0.343099 29.1086 2.12943L42.4913 9.85592C45.5853 11.6423 47.4913 14.9435 47.4913 18.5162V33.9692C47.4913 37.5418 45.5853 40.8431 42.4913 42.6294L29.1086 50.3559C26.0146 52.1423 22.2027 52.1423 19.1086 50.3559L5.72596 42.6294C2.63194 40.8431 0.725956 37.5418 0.725956 33.9692V18.5162C0.725956 14.9435 2.63195 11.6423 5.72596 9.85592L19.1086 2.12943Z" fill="url(#paint0_linear_53_110)"/>
+                                                                <defs>
+                                                                  <linearGradient id="paint0_linear_53_110" x1="-43.532" y1="-34.3465" x2="37.6769" y2="43.9447" gradientUnits="userSpaceOnUse">
+                                                                    <stop stop-color="#92BCFF"/>
+                                                                    <stop offset="1" stop-color="#2377FC"/>
+                                                                  </linearGradient>
+                                                                </defs>
+                                                            </svg>
+                                                            <i class="icon-dollar-sign"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="body-text mb-2">Total Sales</div>
+                                                            <h4>$0</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wrap-chart">
+                                                    <div id="line-chart-2"></div>
+                                                </div>
+                                            </div>
+                                            <!-- /chart-default -->
+                                            <!-- chart-default -->
+                                            <div class="wg-chart-default">
+                                                <div class="flex items-center justify-between">
+                                                    <div class="flex items-center gap14">
+                                                        <div class="image">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="52" viewBox="0 0 48 52" fill="none">
+                                                                <path opacity="0.08" d="M19.1086 2.12943C22.2027 0.343099 26.0146 0.343099 29.1086 2.12943L42.4913 9.85592C45.5853 11.6423 47.4913 14.9435 47.4913 18.5162V33.9692C47.4913 37.5418 45.5853 40.8431 42.4913 42.6294L29.1086 50.3559C26.0146 52.1423 22.2027 52.1423 19.1086 50.3559L5.72596 42.6294C2.63194 40.8431 0.725956 37.5418 0.725956 33.9692V18.5162C0.725956 14.9435 2.63195 11.6423 5.72596 9.85592L19.1086 2.12943Z" fill="url(#paint0_linear_53_110)"/>
+                                                                <defs>
+                                                                  <linearGradient id="paint0_linear_53_110" x1="-43.532" y1="-34.3465" x2="37.6769" y2="43.9447" gradientUnits="userSpaceOnUse">
+                                                                    <stop stop-color="#92BCFF"/>
+                                                                    <stop offset="1" stop-color="#2377FC"/>
+                                                                  </linearGradient>
+                                                                </defs>
+                                                            </svg>
+                                                            <i class="icon-box"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="body-text mb-2">Total Products</div>
+                                                            <h4>0</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wrap-chart">
+                                                    <div id="line-chart-3"></div>
+                                                </div>
+                                            </div>
+                                            <!-- /chart-default -->
+                                        </div>
+                                    </div>
+                                    <!-- /main-content-wrap -->
+                                </div>
+                                    <!-- /main-content-wrap -->
+                                    <!-- bottom-page -->
+                                    <!-- Include Footer -->
+                                    <%- include('footer') %>
+                                        <!-- /bottom-page -->
+                            </div>
+                            <!-- /main-content -->
+                    </div>
+                    <!-- /section-content-right -->
+            </div>
+            <!-- /layout-wrap -->
+        </div>
+        <!-- /#page -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Javascript -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-select.min.js"></script>
+    <script src="/js/zoom.js"></script>
+    <script src="/js/dataTables.min.js"></script>
+    <script src="/js/jvectormap-1.2.2.min.js"></script>
+    <script src="/js/jvectormap-us-lcc.js"></script>
+    <script src="/js/jvectormap.js"></script>
+    <script src="/js/apexcharts/apexcharts.js"></script>
+    <script src="/js/apexcharts/line-chart-1.js"></script>
+    <script src="/js/apexcharts/line-chart-2.js"></script>
+    <script src="/js/apexcharts/line-chart-3.js"></script>
+    <script src="/js/apexcharts/line-chart-4.js"></script>
+    <script src="/js/apexcharts/line-chart-7.js"></script>
+    <script src="/js/switcher.js"></script>
+    <script src="/js/theme-settings.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
+</body>
+
+<!-- Mirrored from themesflat.co/html/remos/home-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 13:10:59 GMT -->
+
+</html>

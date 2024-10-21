@@ -1,7 +1,6 @@
-const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../models/User');
 const bcrypt = require('bcrypt');
-const passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 // Show the login form
 exports.loginForm = (req, res) => {
@@ -10,36 +9,28 @@ exports.loginForm = (req, res) => {
 };
 
 // Handle login
-exports.login = (req, res, next) => {
-    passport.use(new LocalStrategy(
-        {
-            usernameField: 'email', // or 'username' based on your login form
-            passwordField: 'password',
-        },
-        async (email, password, done) => {
-            try {
-                const user = await User.findOne({ email: email }); // Adjust field as needed
-                if (!user) {
-                    return done(null, false, { message: 'Incorrect email or password.' });
-                }
-    
-                // Here, you should verify the password (assuming you are using bcrypt)
-                const isMatch = await bcrypt.compare(password, user.password);
-                if (!isMatch) {
-                    return done(null, false, { message: 'Incorrect email or password.' });
-                }
-    
-                // Return the user if found and password is correct
-                return done(null, user);
-            } catch (err) {
-                return done(err);
-            }
-        }
-    ));
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).send('User not found');
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).send('Invalid password');
+
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
+        expiresIn: '1h',
+    });
+    res.cookie('token', token);
+
+    // Redirect to the respective dashboard
+    if (user.role === 'admin') return res.redirect('/admin/dashboard');
+    if (user.role === 'vendor') return res.redirect('/vendor/dashboard');
+    res.redirect('/');
 };
 
+
 exports.logout = (req, res) => {
-    req.logout();
+    res.clearCookie('token');
     res.redirect('/admin/login');
 };
 

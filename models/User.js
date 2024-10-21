@@ -10,16 +10,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    mobile: {
+    phone: {
         type: String,
         required: false,
-        unique: true,
     },
     isEmailVerified: {
         type: Boolean,
         default: false,
     },
-    isMobileVerified: {
+    isphoneVerified: {
         type: Boolean,
         default: false,
     },

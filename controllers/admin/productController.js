@@ -23,7 +23,8 @@ const upload = multer({
 
 // List Products
 exports.list = async (req, res) => {
-    const products = await Product.find().populate('category subCategory');
+    const products = await Product.find().populate('category subcategory');
+    console.log(products);
     res.render('admin/products/list', { products, title: 'Products' });
 };
 
@@ -36,25 +37,28 @@ exports.renderCreate = async (req, res) => {
 
 // Create Product
 exports.store = async (req, res) => {
-    const errors = validationResult(req);
-    const categories = await Category.find();
-    if (!errors.isEmpty()) {
-        return res.status(400).render('admin/products/add', {
-            errors: errors.array(),
-            categories,
-            title: 'Add Product'
-        });
-    }
-    
-    upload(req, res, async (err) => {
-        if (err) return res.status(500).send('Error uploading images');
+    try {
+        const images = req.files.map(file => file.path); // Get image paths from multer
+
         const product = new Product({
-            ...req.body,
-            images: req.files.map(file => file.path)
+            name: req.body.name,
+            price: req.body.price,
+            original_price: req.body.original_price,
+            discount: req.body.discount,
+            model_number: req.body.model_number,
+            key_features: req.body.key_features,
+            product_description: req.body.product_description,
+            warranty: req.body.warranty,
+            category: req.body.category,
+            subcategory: req.body.subcategory,
+            images: images
         });
+
         await product.save();
-        res.redirect('/admin/product');
-    });
+        res.redirect('/admin/product');  // Redirect to the products page after successful save
+    } catch (err) {
+        res.status(500).send('Error saving product: ', err);
+    }
 };
 
 // Render Edit Form
@@ -94,7 +98,7 @@ exports.delete = async (req, res) => {
     if (!product) return res.status(404).send('Product not found');
     product.images.forEach(image => fs.unlinkSync(path.join(__dirname, '..', '..', image)));
     await product.remove();
-    res.redirect('/admin/products');
+    res.redirect('/admin/product');
 };
 
 exports.getByCategory = async (req, res) => {
