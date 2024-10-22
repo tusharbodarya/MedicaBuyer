@@ -43,6 +43,7 @@
                         Category <span class="tf-color-1">*</span>
                     </div>
                     <select class="flex-grow" name="category" id="category">
+                        <option value="">Select Category</option>
                         <% categories.forEach(category=> { %>
                             <option value="<%= category._id %>">
                                 <%= category.name %>
